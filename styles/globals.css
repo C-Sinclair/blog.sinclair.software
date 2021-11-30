@@ -1,9 +1,129 @@
+ @import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&family=Source+Code+Pro:ital,wght@0,400;0,600;0,900;1,400;1,600&display=swap');
+
+/* theme definition */
+:root {
+  /** 
+   * Aura Theme
+   * https://github.com/daltonmenezes/aura-theme/blob/main/packages/color-palettes/aura-colors.css
+   */
+  --black: #15141b;
+  --white: #edecee;
+  --gray: #6d6d6d;
+  --purple: #a277ff;
+  --purple-fading: #3d375e7f;
+  --green: #61ffca;
+  --orange: #ffca85;
+  --pink: #f694ff;
+  --blue: #82e2ff;
+  --red: 	#ff6767;
+
+  --background-color: var(--black);
+  --foreground-color: var(--white);
+  --muted-color: var(--gray);
+  --selection-color: var(--purple-fading);
+  --primary-color: var(--purple);
+  --secondary-color: var(--green);
+  --tertiary-color: var(--orange);
+  --quaternary-color: var(--pink);
+  --quinary-color: var(--blue);
+  --senary-color: var(--red);
+
+  --warning-color: var(--orange);
+  --success-color: var(--green);
+  --error-color: var(--red);  
+  
+  --black-soft: #15141b;
+  --white-soft: #bdbdbd;
+  --gray-soft: #6d6d6d;
+  --purple-soft: #8464c6;
+  --purple-fading-soft: #3d375e7f;
+  --green-soft: #54c59f;
+  --orange-soft: #c7a06f;
+  --pink-soft: #c17ac8;
+  --blue-soft: #6cb2c7;
+  --red-soft: #c55858;
+
+  --background-soft-color: var(--black-soft);  
+  --foreground-soft-color: var(--white-soft);
+  --muted-soft-color: var(--gray-soft);
+  --selection-soft-color: var(--purple-fading-soft);
+  --primary-soft-color: var(--purple-soft);
+  --secondary-soft-color: var(--green-soft);
+  --tertiary-soft-color: var(--orange-soft);
+  --quaternary-soft-color: var(--pink-soft);
+  --quinary-soft-color: var(--blue-soft);
+  --senary-soft-color: var(--red-soft);
+
+  --warning-soft-color: var(--orange-soft);
+  --success-soft-color: var(--green-soft);
+  --error-soft-color: var(--red-soft);   
+
+  --code-border-color: var(--purple);
+
+  /**
+   * Consistent spacing 
+   */
+  --spacing-xxs: 0.33em;
+  --spacing-xs: 0.5em;
+  --spacing-s: 0.75em;
+  --spacing-m: 1em;
+  --page-max-width: 50em;
+
+  /**
+   * Fonts
+   */
+  --body-font: 'Manrope', sans-serif;
+  --code-font: 'Source Code Pro', monospace;
+}
+
 html,
 body {
   padding: 0;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: var(--background-color);
+  color: var(--white);
+  font-family: var(--body-font);
+}
+
+main {
+  padding: 0 4rem;
+}
+
+ul, ol {
+  list-style: none;
+  padding: 0;
+}
+
+code {
+  display: block;
+  margin: var(--spacing-m) 0;
+  padding: var(--spacing-m);
+  background-color: var(--purple-fading-soft);
+  font-family: var(--code-font);
+  width: 100%;
+  border-left: 3px solid var(--code-border-color);
+}
+
+p > code {
+  display: unset;
+  width: unset;
+  padding: var(--spacing-xxs) var(--spacing-xs) calc(var(--spacing-xxs) - 4px);
+  margin: 0 var(--spacing-xxs);
+  line-height: 2em;
+  border-bottom: 1px solid var(--code-border-color);
+  border-left: unset;
+}
+
+h1 {
+  font-family: var(--code-font);
+  font-weight: bold;
+
+}
+
+footer {
+  background-color: var(--foreground-soft-color);
 }
 
 a {
@@ -11,6 +131,20 @@ a {
   text-decoration: none;
 }
 
+p {
+  display: block;
+  margin: var(--spacing-xs) 0;
+}
+
 * {
   box-sizing: border-box;
+}
+
+.callout {
+  margin: var(--spacing-m) 0;
+  padding: var(--spacing-m);
+  background-color: var(--purple-fading-soft);
+  display: grid;
+  grid-template-columns: 2em 1fr;
+  align-items: center;
 }
