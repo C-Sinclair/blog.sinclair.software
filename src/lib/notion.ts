@@ -1,5 +1,4 @@
 import { Client } from '@notionhq/client';
-import type { SupportedFetch } from '@notionhq/client/build/src/fetch-types';
 
 const NOTION_TOKEN = process.env.NOTION_TOKEN;
 const ARTICLES_DATABASE_ID = process.env.ARTICLES_DATABASE_ID;
@@ -9,19 +8,19 @@ if (!NOTION_TOKEN || !ARTICLES_DATABASE_ID) {
 }
 
 /**
- * SvelteKit compatible Notion client
+ * Notion client
+ * Should only be run server side!
  * @example
- * export const load = async ({ fetch }) => {
- *   const notion = new Notion(fetch)
+ * export const load = async () => {
+ *   const notion = new Notion()
  * }
  */
 export class Notion {
 	private client: Client;
 
-	constructor(fetch?: SupportedFetch) {
+	constructor() {
 		this.client = new Client({
-			auth: NOTION_TOKEN,
-			fetch
+			auth: NOTION_TOKEN
 		});
 	}
 

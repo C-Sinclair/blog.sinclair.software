@@ -3,8 +3,8 @@
 	import { Notion } from "$lib/notion";
 	import type { Article } from '$lib/types';
 	
-	export const load: Load = async ({ fetch }) => {
-		const notion = new Notion(fetch)
+	export const load: Load = async () => {
+		const notion = new Notion()
 		const articles = await notion.getArticlesDatabase()
 		return {
 			props: {
@@ -38,15 +38,3 @@
 		{/each}
 	</ol>
 </section>
-
-<style>
-	.root {
-		min-height: 100vh;
-		height: 100vh;
-		width: 100vw;
-		padding: 0 0.5rem;
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-</style>

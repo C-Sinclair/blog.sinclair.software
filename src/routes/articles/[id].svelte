@@ -1,8 +1,8 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
 
-	export const load: Load = async ({ fetch, page }) => {
-    const notion = new Notion(fetch)
+	export const load: Load = async ({ page }) => {
+    const notion = new Notion()
     const id = page.params?.id;
     if (!id) {
       throw new Error('missing id')
@@ -21,8 +21,8 @@
 <script lang="ts">
   import { Notion } from "$lib/notion";
   import type { BlockType, Article } from "$lib/types"
-  import { ArticleHeader } from '$components/header/ArticleHeader';
-  import Block from '$components/notion/Block.svelte';
+  import { ArticleHeader } from '$lib/components/header/ArticleHeader';
+  import Block from '$lib/components/notion/Block.svelte';
 
   export let article: Article 
   export let blocks: BlockType[]
@@ -34,23 +34,27 @@
   <title>{article.properties.Name.title[0].plain_text}</title>
 </svelte:head>
 
-<div class='article'>
-  <main>
-    <ArticleHeader article={article} />
-    <section id="tags">
-      <ul>
-        {#each tags as tag}
-        <li class={tag.color}>
-          {tag.name}
-        </li>
-        {/each}
-      </ul>
-    </section>
-    <article>
-      {#each blocks as block}
-        <Block block={block}/>
-      {/each}
-    </article>
-  </main>
-</div>
+<ArticleHeader article={article} />
 
+<section id="tags">
+  <ul>
+    {#each tags as tag}
+    <li class={tag.color}>
+      {tag.name}
+    </li>
+    {/each}
+  </ul>
+</section>
+
+<article>
+  {#each blocks as block}
+    <Block block={block}/>
+  {/each}
+</article>
+
+<style>
+	article {
+		max-width: var(--page-max-width);
+		margin: 0 auto;
+	}
+</style>
