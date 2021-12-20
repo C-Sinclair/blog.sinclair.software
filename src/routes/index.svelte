@@ -1,11 +1,13 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
-	import { Notion } from "$lib/notion";
 	import type { Article } from '$lib/types';
 	
-	export const load: Load = async () => {
-		const notion = new Notion()
-		const articles = await notion.getArticlesDatabase()
+	export const load: Load = async ({ fetch }) => {
+		const res = await fetch(`/api/articles`)
+		if (!res.ok) {
+			throw new Error(`Api request failed`)
+		}
+		const articles = await res.json()
 		return {
 			props: {
 				articles

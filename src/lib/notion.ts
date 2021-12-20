@@ -1,11 +1,6 @@
+import dotenv from 'dotenv';
 import { Client } from '@notionhq/client';
-
-const NOTION_TOKEN = process.env.NOTION_TOKEN;
-const ARTICLES_DATABASE_ID = process.env.ARTICLES_DATABASE_ID;
-
-if (!NOTION_TOKEN || !ARTICLES_DATABASE_ID) {
-	throw new Error(`Missing NOTION_TOKEN or ARTICLES_DATABASE_ID`);
-}
+import type { Article, BlockWithChildren } from './types';
 
 /**
  * Notion client
@@ -19,12 +14,21 @@ export class Notion {
 	private client: Client;
 
 	constructor() {
+		dotenv.config();
+		const NOTION_TOKEN = process.env.NOTION_TOKEN as string;
+		if (!NOTION_TOKEN) {
+			throw new Error(`Missing NOTION_TOKEN `);
+		}
 		this.client = new Client({
 			auth: NOTION_TOKEN
 		});
 	}
 
-	async getArticlesDatabase() {
+	async getArticlesDatabase(): Promise<Article[]> {
+		const ARTICLES_DATABASE_ID = process.env.ARTICLES_DATABASE_ID as string;
+		if (!ARTICLES_DATABASE_ID) {
+			throw new Error(`Missing ARTICLES_DATABASE_ID`);
+		}
 		const res = await this.client.databases.query({
 			database_id: ARTICLES_DATABASE_ID,
 			filter: {
@@ -34,28 +38,28 @@ export class Notion {
 				}
 			}
 		});
-		return res.results;
+		return res.results as Article[];
 	}
 
 	/**
 	 * @param id -- the Notion page id for the article
 	 */
-	async getArticleById(id: string) {
+	async getArticleById(id: string): Promise<Article> {
 		const res = await this.client.pages.retrieve({
 			page_id: id
 		});
-		return res;
+		return res as Article;
 	}
 
 	/**
 	 * @param id -- the Notion root block id
 	 */
-	async getBlocks(id: string) {
+	async getBlocks(id: string): Promise<BlockWithChildren[]> {
 		const res = await this.client.blocks.children.list({
 			block_id: id,
 			page_size: 50
 		});
-		const blocks = res.results;
+		const blocks = res.results as BlockWithChildren[];
 		const childBlocks = await Promise.all(
 			blocks
 				.filter((block) => block.has_children)

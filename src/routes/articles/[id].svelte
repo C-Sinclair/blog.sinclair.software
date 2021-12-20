@@ -1,14 +1,16 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
 
-	export const load: Load = async ({ page }) => {
-    const notion = new Notion()
+	export const load: Load = async ({ page, fetch }) => {
     const id = page.params?.id;
     if (!id) {
       throw new Error('missing id')
     }
-    const article = await notion.getArticleById(id);
-    const blocks = await notion.getBlocks(id);
+    const res = await fetch(`/api/articles/${id}`)
+    if (!res.ok) {
+      throw new Error(`Api request failed`)
+    }
+    const { article, blocks } = await res.json()
     return {
       props: {
         article,
@@ -19,9 +21,8 @@
 </script>
 
 <script lang="ts">
-  import { Notion } from "$lib/notion";
   import type { BlockType, Article } from "$lib/types"
-  import { ArticleHeader } from '$lib/components/header/ArticleHeader';
+  import Header from '$lib/components/header/Header.svelte';
   import Block from '$lib/components/notion/Block.svelte';
 
   export let article: Article 
@@ -34,7 +35,7 @@
   <title>{article.properties.Name.title[0].plain_text}</title>
 </svelte:head>
 
-<ArticleHeader article={article} />
+<Header article={article} />
 
 <section id="tags">
   <ul>

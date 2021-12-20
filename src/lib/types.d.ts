@@ -1,4 +1,3 @@
-b;
 /**
  * Can be made globally available by placing this
  * inside `global.d.ts` and removing `export` keyword
@@ -6,11 +5,6 @@ b;
 export interface Locals {
 	userid: string;
 }
-
-/**
- * This should be built in to Typescript from version 4.4 onwards
- */
-export type Awaited<T> = T extends PromiseLike<infer U> ? U : T;
 
 export type EmojiBlock = {
 	type: 'emoji';
@@ -20,14 +14,14 @@ export type EmojiBlock = {
 export type ArticleStatus = 'Published' | 'Not Started';
 
 export type Article = {
-	archived: boolean;
-	cover: any;
-	created_time: string;
-	icon: EmojiBlock;
-	id: string;
-	last_edited_time: string;
 	object: 'page';
-	url: string;
+	id: string;
+	created_time: string;
+	last_edited_time: string;
+	cover: null;
+	archived?: boolean;
+	url: `https://www.notion.so/${string}`;
+	icon: EmojiBlock;
 	parent: {
 		database_id: string;
 		type: 'database_id';
@@ -51,6 +45,21 @@ export type Article = {
 				name: string;
 				color: string;
 			}[];
+		};
+		Language: {
+			id: 'R1%5CS';
+			type: 'multi_select';
+			multi_select: [];
+		};
+		'Related to Tasks (Articles)': {
+			id: '%5D%3EHH';
+			type: 'relation';
+			relation: [];
+		};
+		Created: {
+			id: 'nox2';
+			type: 'created_time';
+			created_time: string;
 		};
 	};
 };
@@ -106,13 +115,8 @@ export type BlockContent<P extends Record<string, unknown> = Record<string, neve
 	text: NotionTextObject[];
 	icon?: EmojiBlock;
 	checked?: boolean;
-	children?: BlockType[];
+	children?: BlockType<P>[];
 };
-
-export type BlockContentProp<
-	T = BlockName,
-	P extends Record<string, unknown> = Record<string, never>
-> = Record<T, BlockContent<P>>;
 
 /**
  * Generic Notion block type
@@ -126,7 +130,7 @@ export type BlockType<T = BlockName, P extends Record<string, unknown> = Record<
 	last_edited_time: string;
 	object: 'block';
 	type: T;
-} & BlockContent<T, P>;
+} & BlockContent<P>;
 
 export type CalloutBlock = BlockType<
 	'callout',
@@ -139,5 +143,12 @@ export type CodeBlock = BlockType<
 	'code',
 	{
 		language: string;
+	}
+>;
+
+export type BlockWithChildren = BlockType<
+	BlockName,
+	{
+		children?: BlockType;
 	}
 >;
