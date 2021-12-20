@@ -1,35 +1,38 @@
-# C-Sinclair's Software Blog
+# create-svelte
 
-## Development
+Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte);
 
-Run the development server with your favourite package manager:
+## Creating a project
+
+If you're seeing this, you've probably already done this step. Congrats!
 
 ```bash
-pnpm dev 
-# or
-yarn dev
-# or
-npm run dev
+# create a new project in the current directory
+npm init svelte@next
+
+# create a new project in my-app
+npm init svelte@next my-app
 ```
 
-## Articles
+> Note: the `@next` is temporary
 
-Notion is my daily driver for note taking, so naturally all of my articles live there.
+## Developing
 
-The Notion API is used to access article pages, and builds them into static pages.
+Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
 
-## No Typescript?
+```bash
+npm run dev
 
-> Wtf I thought you loved Typescript.
+# or start the server and open the app in a new browser tab
+npm run dev -- --open
+```
 
-I do, but on this project we'll leverage the type system purely through doc-comment stylee.
+## Building
 
-_Controversial_
+Before creating a production version of your app, install an [adapter](https://kit.svelte.dev/docs#adapters) for your target environment. Then:
 
-## Future Possibilities...
+```bash
+npm run build
+```
 
-- [ ] Controversial opinions page
-- [ ] Contact me page
-- [ ] Reactions using emojis
-- [ ] Commenting 
-
+> You can preview the built app with `npm run preview`, regardless of whether you installed an adapter. This should _not_ be used to serve your app in production.
