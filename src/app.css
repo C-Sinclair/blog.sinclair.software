@@ -1,107 +1,151 @@
+@import '@fontsource/manrope';
 @import '@fontsource/fira-mono';
 
+/* theme definition */
 :root {
-	font-family: Arial, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu,
-		Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-	--font-mono: 'Fira Mono', monospace;
-	--pure-white: #ffffff;
-	--primary-color: #b9c6d2;
-	--secondary-color: #d0dde9;
-	--tertiary-color: #edf0f8;
-	--accent-color: #ff3e00;
-	--heading-color: rgba(0, 0, 0, 0.7);
-	--text-color: #444444;
-	--background-without-opacity: rgba(255, 255, 255, 0.7);
-	--column-width: 42rem;
-	--column-margin-top: 4rem;
+	/** 
+   * Aura Theme
+   * https://github.com/daltonmenezes/aura-theme/blob/main/packages/color-palettes/aura-colors.css
+   */
+	--black: #15141b;
+	--white: #edecee;
+	--gray: #6d6d6d;
+	--purple: #a277ff;
+	--purple-fading: #3d375e7f;
+	--green: #61ffca;
+	--orange: #ffca85;
+	--pink: #f694ff;
+	--blue: #82e2ff;
+	--red: #ff6767;
+
+	--background-color: var(--black);
+	--foreground-color: var(--white);
+	--muted-color: var(--gray);
+	--selection-color: var(--purple-fading);
+	--primary-color: var(--purple);
+	--secondary-color: var(--green);
+	--tertiary-color: var(--orange);
+	--quaternary-color: var(--pink);
+	--quinary-color: var(--blue);
+	--senary-color: var(--red);
+
+	--warning-color: var(--orange);
+	--success-color: var(--green);
+	--error-color: var(--red);
+
+	--black-soft: #15141b;
+	--white-soft: #bdbdbd;
+	--gray-soft: #6d6d6d;
+	--purple-soft: #8464c6;
+	--purple-fading-soft: #3d375e7f;
+	--green-soft: #54c59f;
+	--orange-soft: #c7a06f;
+	--pink-soft: #c17ac8;
+	--blue-soft: #6cb2c7;
+	--red-soft: #c55858;
+
+	--background-soft-color: var(--black-soft);
+	--foreground-soft-color: var(--white-soft);
+	--muted-soft-color: var(--gray-soft);
+	--selection-soft-color: var(--purple-fading-soft);
+	--primary-soft-color: var(--purple-soft);
+	--secondary-soft-color: var(--green-soft);
+	--tertiary-soft-color: var(--orange-soft);
+	--quaternary-soft-color: var(--pink-soft);
+	--quinary-soft-color: var(--blue-soft);
+	--senary-soft-color: var(--red-soft);
+
+	--warning-soft-color: var(--orange-soft);
+	--success-soft-color: var(--green-soft);
+	--error-soft-color: var(--red-soft);
+
+	--code-border-color: var(--purple);
+
+	/**
+   * Consistent spacing 
+   */
+	--spacing-xxs: 0.33em;
+	--spacing-xs: 0.5em;
+	--spacing-s: 0.75em;
+	--spacing-m: 1em;
+	--page-max-width: 50em;
+
+	/**
+   * Fonts
+   */
+	--body-font: 'Manrope', sans-serif;
+	--code-font: 'Fira Mono', monospace;
 }
 
+html,
 body {
-	min-height: 100vh;
+	padding: 0;
 	margin: 0;
-	background-color: var(--primary-color);
-	background: linear-gradient(
-		180deg,
-		var(--primary-color) 0%,
-		var(--secondary-color) 10.45%,
-		var(--tertiary-color) 41.35%
-	);
+	font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen, Ubuntu, Cantarell,
+		Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+	background-color: var(--background-color);
+	color: var(--white);
+	font-family: var(--body-font);
 }
 
-body::before {
-	content: '';
-	width: 80vw;
-	height: 100vh;
-	position: absolute;
-	top: 0;
-	left: 10vw;
-	z-index: -1;
-	background: radial-gradient(
-		50% 50% at 50% 50%,
-		var(--pure-white) 0%,
-		rgba(255, 255, 255, 0) 100%
-	);
-	opacity: 0.05;
+main {
+	padding: 0 4rem;
 }
 
-#svelte {
-	min-height: 100vh;
-	display: flex;
-	flex-direction: column;
+ul,
+ol {
+	list-style: none;
+	padding: 0;
 }
 
-h1,
-h2,
-p {
-	font-weight: 400;
-	color: var(--heading-color);
+code {
+	display: block;
+	margin: var(--spacing-m) 0;
+	padding: var(--spacing-m);
+	background-color: var(--purple-fading-soft);
+	font-family: var(--code-font);
+	width: 100%;
+	border-left: 3px solid var(--code-border-color);
 }
 
-p {
-	line-height: 1.5;
-}
-
-a {
-	color: var(--accent-color);
-	text-decoration: none;
-}
-
-a:hover {
-	text-decoration: underline;
+p > code {
+	display: unset;
+	width: unset;
+	padding: var(--spacing-xxs) var(--spacing-xs) calc(var(--spacing-xxs) - 4px);
+	margin: 0 var(--spacing-xxs);
+	line-height: 2em;
+	border-bottom: 1px solid var(--code-border-color);
+	border-left: unset;
 }
 
 h1 {
-	font-size: 2rem;
-	text-align: center;
+	font-family: var(--code-font);
+	font-weight: bold;
 }
 
-h2 {
-	font-size: 1rem;
+footer {
+	background-color: var(--foreground-soft-color);
 }
 
-pre {
-	font-size: 16px;
-	font-family: var(--font-mono);
-	background-color: rgba(255, 255, 255, 0.45);
-	border-radius: 3px;
-	box-shadow: 2px 2px 6px rgb(255 255 255 / 25%);
-	padding: 0.5em;
-	overflow-x: auto;
-	color: var(--text-color);
+a {
+	color: inherit;
+	text-decoration: none;
 }
 
-input,
-button {
-	font-size: inherit;
-	font-family: inherit;
+p {
+	display: block;
+	margin: var(--spacing-xs) 0;
 }
 
-button:focus:not(:focus-visible) {
-	outline: none;
+* {
+	box-sizing: border-box;
 }
 
-@media (min-width: 720px) {
-	h1 {
-		font-size: 2.4rem;
-	}
+.callout {
+	margin: var(--spacing-m) 0;
+	padding: var(--spacing-m);
+	background-color: var(--purple-fading-soft);
+	display: grid;
+	grid-template-columns: 2em 1fr;
+	align-items: center;
 }

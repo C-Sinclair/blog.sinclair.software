@@ -28,7 +28,7 @@
   export let article: Article 
   export let blocks: BlockType[]
 
-  let tags = article.properties.Tags.multi_select
+  $: tags = article.properties.Tags.multi_select
 </script>
 
 <svelte:head>

@@ -6,8 +6,8 @@
 
 <pre>
   <code>
-    {#each content.text as { text }}
-      {Array.isArray(text.content) ? text.content.join("\n") : text.content}
+    {#each content?.text ?? [] as { text }}
+      {Array.isArray(text?.content) ? text.content.join("\n") : text.content}
     {/each}
   </code>
 </pre>

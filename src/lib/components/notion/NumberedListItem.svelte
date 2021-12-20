@@ -6,7 +6,7 @@
 </script>
 
 <li>
-  {#each content.text as { text }}
+  {#each content?.text ?? [] as { text }}
     <Anchor link={text.link}>{text.content}</Anchor>
   {/each}
 </li>

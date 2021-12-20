@@ -5,7 +5,7 @@
   export let content: BlockContent  
 </script>
 
-{#each content.text as {text}}
+{#each content?.text ?? [] as {text}}
   <Anchor link={text.link}>
     <h1>{text.content}</h1>
   </Anchor>

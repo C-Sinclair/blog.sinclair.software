@@ -6,7 +6,7 @@
 </script>
 
 <p>
-  {#each content.text as {text, annotations}}
+  {#each content?.text ?? [] as {text, annotations}}
     <Anchor link={text.link}>
       {#if annotations.code}
         <code>{text.content}</code>

@@ -8,6 +8,6 @@
 <div>
   <label for={id}>
     <input type="checkbox" id={id}  />
-    {content.text}
+    {content?.text ?? []}
   </label>
 </div>

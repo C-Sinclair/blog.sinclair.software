@@ -6,8 +6,8 @@
 </script>
 
 <details>
-  <summary>{content.text}</summary>
-  {#each content.children as block}
+  <summary>{content?.text ?? []}</summary>
+  {#each content?.children as block}
     <Block {block} />
   {/each}
 </details>

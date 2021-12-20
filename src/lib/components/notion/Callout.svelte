@@ -5,12 +5,12 @@
 </script>
 
 <section class="callout">
-  {#if content.icon} 
+  {#if content?.icon} 
     <span class="emoji">{content.icon.emoji}</span>
   {/if}
   <span class="text">
     <p>
-      {#each content.text as { text, annotations }}
+      {#each content?.text ?? [] as { text, annotations }}
         {#if annotations.code} 
           <code>{text.content}</code> 
         {:else}
