@@ -14,3 +14,10 @@
     {/each}
   </ul>
 </footer>
+
+<style>
+  footer {
+    background-color: var(--selection-soft-color);
+    padding: var(--spacing-m);
+  }
+</style>

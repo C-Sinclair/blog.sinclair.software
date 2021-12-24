@@ -26,17 +26,62 @@
 	<link rel="icon" href="/favicon.ico" />
 </svelte:head>
 
-<h1>Welcome to my blog</h1>
-<p>My name is Conor, and I'm a Software Engineer</p>
+<header>
+	<h1>Welcome to my blog</h1>
+	<blockquote>My name is Conor, and I'm a Software Engineer</blockquote>
+	<!-- TODO: image of me waving, on hover change to other image -->
+</header>
+
+<section id='prelude'>
+	<p>I see this blog as being a way to get thoughts and ideas out of my brain, and to (hopefully) help some other developer who is in a similar position.</p>
+	<p>It is my plan for this to be one of the pillars of my own learning. As you don't ever really know something until you've taught that knowledge to someone else.</p>
+	<p>Sharing knowledge is the absolute most powerful feature of the web, and I want to do my small part in it.</p>
+</section>
+
 <section id="articles">
-	<h6>Here's a selection of articles I've written</h6>
+	<h1>Articles</h1>
+	<p>Here's a selection of articles I've written</p>
 	<ol>
 		{#each articles as article}
 			<li>
 				<a href={`/articles/${article.id}`}>
-					<h6>{article.properties.Name.title[0].plain_text}</h6>
+					{#if article.icon?.emoji}
+						<i>{article.icon?.emoji}</i>
+					{/if}
+					<h4>{article.properties.Name.title[0].plain_text}</h4>
 				</a>
 			</li>
 		{/each}
 	</ol>
 </section>
+
+<style>
+	header {
+		padding: var(--spacing-s) 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+	}
+	blockquote {
+		background-color: var(--primary-soft-color);
+		padding: var(--spacing-xs) var(--spacing-s);
+		border-radius: var(--spacing-xxs);
+		margin: var(--spacing-s) 0 0 0;
+	}
+	section {
+		margin-bottom: var(--spacing-m);
+	}
+	li {
+		margin-bottom: var(--spacing-s);
+		border: 1px solid var(--primary-soft-color);
+		border-radius: var(--spacing-xxs);
+	}
+	li a {
+		display: flex;
+		align-items: center;
+		padding: 0 var(--spacing-m);
+	}
+	li i {
+		margin-right: var(--spacing-s);
+	}
+</style>

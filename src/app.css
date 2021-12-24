@@ -121,6 +121,7 @@ p > code {
 h1 {
 	font-family: var(--code-font);
 	font-weight: bold;
+	margin: 0;
 }
 
 footer {
