@@ -36,7 +36,13 @@ export class Notion {
 				select: {
 					equals: 'Published'
 				}
-			}
+			},
+			sorts: [
+				{
+					property: 'Created',
+					direction: 'descending'
+				}
+			]
 		});
 		return res.results as Article[];
 	}

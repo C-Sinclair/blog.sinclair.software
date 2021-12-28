@@ -16,8 +16,6 @@
 	 * Renders a Notion Block into Jsx components
 	 */
 	export let block: BlockType;
-
-	console.log(block);
 </script>
 
 {#if block.type === 'paragraph'}

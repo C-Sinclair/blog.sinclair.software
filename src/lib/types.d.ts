@@ -13,6 +13,12 @@ export type EmojiBlock = {
 
 export type ArticleStatus = 'Published' | 'Not Started';
 
+export type ArticleTag = {
+	id: string;
+	name: string;
+	color: string;
+};
+
 export type Article = {
 	object: 'page';
 	id: string;
@@ -40,20 +46,12 @@ export type Article = {
 		Tags: {
 			id: string;
 			type: 'multi_select';
-			multi_select: {
-				id: string;
-				name: string;
-				color: string;
-			}[];
+			multi_select: ArticleTag[];
 		};
 		Language: {
 			id: 'R1%5CS';
 			type: 'multi_select';
-			multi_select: {
-				id: string;
-				name: string;
-				color: string;
-			}[];
+			multi_select: ArticleTag[];
 		};
 		'Related to Tasks (Articles)': {
 			id: '%5D%3EHH';
