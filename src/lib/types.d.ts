@@ -49,7 +49,11 @@ export type Article = {
 		Language: {
 			id: 'R1%5CS';
 			type: 'multi_select';
-			multi_select: [];
+			multi_select: {
+				id: string;
+				name: string;
+				color: string;
+			}[];
 		};
 		'Related to Tasks (Articles)': {
 			id: '%5D%3EHH';

@@ -100,7 +100,6 @@ ol {
 
 code {
 	display: block;
-	margin: var(--spacing-m) 0;
 	padding: var(--spacing-m);
 	background-color: var(--purple-fading-soft);
 	font-family: var(--code-font);
@@ -149,4 +148,15 @@ p {
 	display: grid;
 	grid-template-columns: 2em 1fr;
 	align-items: center;
+}
+
+@media only screen and (max-width: 600px) {
+	:root {
+		--mobile-padding: var(--spacing-m);
+		--page-max-width: calc(100vw - 2 * var(--mobile-padding));
+	}
+
+	main {
+		padding: 0 var(--mobile-padding);
+	}
 }

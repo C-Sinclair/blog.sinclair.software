@@ -1,5 +1,4 @@
 <script lang="ts">
-	import Header from '$lib/components/header/Header.svelte';
 	import Footer from '$lib/components/footer/Footer.svelte';
 	import '../app.css';
 </script>
@@ -11,5 +10,9 @@
 <Footer />
 
 <style>
-
+	main {
+		display: flex;
+		flex-direction: column;
+		padding-bottom: var(--spacing-m);
+	}
 </style>

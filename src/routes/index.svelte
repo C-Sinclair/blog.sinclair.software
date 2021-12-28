@@ -70,11 +70,19 @@
 	}
 	section {
 		margin-bottom: var(--spacing-m);
+		max-width: var(--page-max-width);		
+		width: 100%;
+		align-self: center;
 	}
 	li {
 		margin-bottom: var(--spacing-s);
 		border: 1px solid var(--primary-soft-color);
 		border-radius: var(--spacing-xxs);
+		transition: transform 0.2s ease-in-out;
+	}
+	li:hover {
+		transform: scale(1.005);
+		background-color: var(--selection-color);
 	}
 	li a {
 		display: flex;
