@@ -156,3 +156,14 @@ export type BlockWithChildren = BlockType<
 		children?: BlockType;
 	}
 >;
+
+export type ImageBlock = BlockType<
+	'image',
+	{
+		caption: string[];
+		file: {
+			expiry_time: string;
+			url: string;
+		};
+	}
+>;
