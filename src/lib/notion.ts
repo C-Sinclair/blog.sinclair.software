@@ -12,6 +12,7 @@ import type { Article, BlockWithChildren } from './types';
  */
 export class Notion {
 	private client: Client;
+	private ARTICLES_DATABASE_ID = process.env.ARTICLES_DATABASE_ID as string;
 
 	constructor() {
 		dotenv.config();
@@ -19,18 +20,17 @@ export class Notion {
 		if (!NOTION_TOKEN) {
 			throw new Error(`Missing NOTION_TOKEN `);
 		}
+		if (!this.ARTICLES_DATABASE_ID) {
+			throw new Error(`Missing ARTICLES_DATABASE_ID`);
+		}
 		this.client = new Client({
 			auth: NOTION_TOKEN
 		});
 	}
 
 	async getArticlesDatabase(): Promise<Article[]> {
-		const ARTICLES_DATABASE_ID = process.env.ARTICLES_DATABASE_ID as string;
-		if (!ARTICLES_DATABASE_ID) {
-			throw new Error(`Missing ARTICLES_DATABASE_ID`);
-		}
 		const res = await this.client.databases.query({
-			database_id: ARTICLES_DATABASE_ID,
+			database_id: this.ARTICLES_DATABASE_ID,
 			filter: {
 				property: 'Status',
 				select: {
@@ -55,6 +55,27 @@ export class Notion {
 			page_id: id
 		});
 		return res as Article;
+	}
+
+	/**
+	 *
+	 * @param path -- the Notion path field (on properties)
+	 * @throws if no page found
+	 */
+	async getArticleByPath(path: string): Promise<Article> {
+		const res = await this.client.databases.query({
+			database_id: this.ARTICLES_DATABASE_ID,
+			filter: {
+				property: 'Path',
+				text: {
+					equals: path
+				}
+			}
+		});
+		if (!res || res.results.length > 1) {
+			throw new Error(`Could not retrieve article`);
+		}
+		return res.results[0] as Article;
 	}
 
 	/**

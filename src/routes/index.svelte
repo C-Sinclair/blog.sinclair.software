@@ -17,11 +17,12 @@
 </script>
 
 <script lang="ts">
-	import Tag from '$lib/components/tags/Tag.svelte';
 	import Tags from '$lib/components/tags/Tags.svelte';
 	import { getTags } from '$lib/components/tags/util';
 
 	export let articles: Article[];
+
+	console.log(articles);
 </script>
 
 <svelte:head>
@@ -58,7 +59,7 @@
 	<ol>
 		{#each articles as article}
 			<li>
-				<a href={`/articles/${article.id}`}>
+				<a href={`/articles/${article.properties.Path.rich_text[0].text.content}`}>
 					{#if article.icon?.emoji}
 						<span>{article.icon?.emoji}</span>
 					{/if}

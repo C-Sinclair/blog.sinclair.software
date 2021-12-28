@@ -63,6 +63,11 @@ export type Article = {
 			type: 'created_time';
 			created_time: string;
 		};
+		Path: {
+			id: 'kQ%5C%3D';
+			type: 'rich_text';
+			rich_text: NotionTextObject[];
+		};
 	};
 };
 
