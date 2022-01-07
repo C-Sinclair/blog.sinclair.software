@@ -22,13 +22,9 @@
 <div class="content">
 	<h1>About me</h1>
 
-	<p>
-		I'm Conor.
-	</p>
+	<p>I'm Conor.</p>
 
-	<p>
-		I do dev.
-	</p>
+	<p>I do dev.</p>
 </div>
 
 <style>

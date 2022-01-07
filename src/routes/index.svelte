@@ -2,12 +2,9 @@
 	import type { Load } from '@sveltejs/kit';
 	import type { Article } from '$lib/types';
 
-	export const load: Load = async ({ fetch }) => {
-		const res = await fetch(`/api/articles`);
-		if (!res.ok) {
-			throw new Error(`Api request failed`);
-		}
-		const articles = await res.json();
+	export const load: Load = async () => {
+		const notion = new Notion();
+		const articles = await notion.getArticlesDatabase();
 		return {
 			props: {
 				articles
@@ -19,16 +16,15 @@
 <script lang="ts">
 	import Tags from '$lib/components/tags/Tags.svelte';
 	import { getTags } from '$lib/components/tags/util';
+	import { Notion } from '$lib/notion';
 
 	export let articles: Article[];
-
-	console.log(articles);
 </script>
 
 <svelte:head>
 	<title>C Sinclair => Blog</title>
 	<meta name="description" content="A blog about software" />
-	<link rel="icon" href="/favicon.ico" />
+	<link rel="icon" href="/favicon.png" />
 </svelte:head>
 
 <header>

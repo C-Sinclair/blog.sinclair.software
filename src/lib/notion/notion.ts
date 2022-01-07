@@ -1,6 +1,6 @@
 import dotenv from 'dotenv';
 import { Client } from '@notionhq/client';
-import type { Article, BlockWithChildren } from './types';
+import type { Article, BlockWithChildren } from '../types';
 
 /**
  * Notion client

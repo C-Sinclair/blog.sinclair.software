@@ -1,16 +1,15 @@
 <script context="module" lang="ts">
 	import type { Load } from '@sveltejs/kit';
+	import { Notion } from '$lib/notion/notion';
 
-	export const load: Load = async ({ page, fetch }) => {
-		const id = page.params?.id;
-		if (!id) {
-			throw new Error('missing id');
+	export const load: Load = async ({ params, fetch }) => {
+		const { path } = params;
+		const notion = new Notion();
+		const article = await notion.getArticleByPath(path);
+		if (!article) {
+			throw new Error('No article for that path');
 		}
-		const res = await fetch(`/api/articles/${id}`);
-		if (!res.ok) {
-			throw new Error(`Api request failed`);
-		}
-		const { article, blocks } = await res.json();
+		const blocks = await notion.getBlocks(article.id);
 		return {
 			props: {
 				article,
