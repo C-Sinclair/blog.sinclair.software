@@ -51,6 +51,12 @@
 			title: 'Music',
 			description: `That's right I make music (sometimes) too.`,
 			icon: '𝄞'
+		},
+		{
+			href: 'https://blog.irrelevant.ninja/',
+			title: 'Irrelevant Blog',
+			description: `I have an older blog with a top notch domain name.`,
+			icon: '🥷'
 		}
 	];
 </script>
