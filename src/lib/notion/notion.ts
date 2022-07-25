@@ -12,8 +12,7 @@ import type { Article, BlockWithChildren } from "../types";
  */
 export class Notion {
   private client: Client;
-  private ARTICLES_DATABASE_ID = import.meta.env
-    .VITE_ARTICLES_DATABASE_ID as string;
+  private ARTICLES_DATABASE_ID: string;
 
   constructor() {
     const env = dotenv.config();
@@ -21,6 +20,7 @@ export class Notion {
     if (!NOTION_TOKEN) {
       throw new Error(`Missing NOTION_TOKEN `);
     }
+    this.ARTICLES_DATABASE_ID = env.parsed.ARTICLES_DATABASE_ID as string;
     if (!this.ARTICLES_DATABASE_ID) {
       throw new Error(`Missing ARTICLES_DATABASE_ID`);
     }
