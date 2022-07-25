@@ -1,20 +1,23 @@
 {
 	"name": "blog.sinclair.software",
-	"version": "0.0.1",
+	"version": "0.0.2",
 	"scripts": {
-		"dev": "svelte-kit dev",
+		"dev": "vite dev",
 		"gen:routes": "node --loader ts-node/esm ./bin/article-paths.ts",
-		"build": "npm run gen:routes && svelte-kit build",
+		"build": "npm run gen:routes && vite build",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
+		"prepare": "svelte-kit sync",
+		"test": "playwright test",
 		"check": "svelte-check --tsconfig ./tsconfig.json",
 		"check:watch": "svelte-check --tsconfig ./tsconfig.json --watch",
 		"lint": "prettier --ignore-path .gitignore --check --plugin-search-dir=. . && eslint --ignore-path .gitignore .",
 		"format": "prettier --ignore-path .gitignore --write --plugin-search-dir=. ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-static": "^1.0.0-next.24",
-		"@sveltejs/kit": "^1.0.0-next.218",
+		"@playwright/test": "^1.22.2",
+		"@sveltejs/adapter-static": "next",
+		"@sveltejs/kit": "next",
 		"@types/cookie": "^0.4.1",
 		"@types/node": "^17.0.8",
 		"@types/prismjs": "^1.16.6",
@@ -33,7 +36,8 @@
 		"svelte-preprocess": "^4.9.4",
 		"ts-node": "^10.4.0",
 		"tslib": "^2.3.1",
-		"typescript": "^4.5.4"
+		"typescript": "^4.5.4",
+		"vite": "^3.0.0"
 	},
 	"type": "module",
 	"dependencies": {
