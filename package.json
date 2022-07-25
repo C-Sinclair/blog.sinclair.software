@@ -4,7 +4,8 @@
 	"scripts": {
 		"dev": "vite dev",
 		"gen:routes": "node --loader ts-node/esm ./bin/article-paths.ts",
-		"build": "npm run gen:routes && vite build",
+		"build": "pnpm run gen:routes && vite build",
+		"netlify:build": "echo \"NOTION_TOKEN=$NOTION_TOKEN\" > .env && pnpm run build",
 		"package": "svelte-kit package",
 		"preview": "svelte-kit preview",
 		"prepare": "svelte-kit sync",

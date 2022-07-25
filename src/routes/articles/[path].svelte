@@ -1,24 +1,3 @@
-<script context="module" lang="ts">
-	import type { Load } from '@sveltejs/kit';
-	import { Notion } from '$lib/notion/notion';
-
-	export const load: Load = async ({ params, fetch }) => {
-		const { path } = params;
-		const notion = new Notion();
-		const article = await notion.getArticleByPath(path);
-		if (!article) {
-			throw new Error('No article for that path');
-		}
-		const blocks = await notion.getBlocks(article.id);
-		return {
-			props: {
-				article,
-				blocks
-			}
-		};
-	};
-</script>
-
 <script lang="ts">
 	import type { BlockType, Article } from '$lib/types';
 	import Header from '$lib/components/header/Header.svelte';

@@ -2,6 +2,8 @@ import dotenv from "dotenv";
 import { Client } from "@notionhq/client";
 import type { Article, BlockWithChildren } from "../types";
 
+const ARTICLES_DATABASE_ID = "c6aae2b81360471f9e33a4a5d5bc83aa";
+
 /**
  * Notion client
  * Should only be run server side!
@@ -12,17 +14,12 @@ import type { Article, BlockWithChildren } from "../types";
  */
 export class Notion {
   private client: Client;
-  private ARTICLES_DATABASE_ID: string;
 
   constructor() {
     const env = dotenv.config();
     const NOTION_TOKEN = env.parsed.NOTION_TOKEN as string;
     if (!NOTION_TOKEN) {
       throw new Error(`Missing NOTION_TOKEN `);
-    }
-    this.ARTICLES_DATABASE_ID = env.parsed.ARTICLES_DATABASE_ID as string;
-    if (!this.ARTICLES_DATABASE_ID) {
-      throw new Error(`Missing ARTICLES_DATABASE_ID`);
     }
     this.client = new Client({
       auth: NOTION_TOKEN,
@@ -31,7 +28,7 @@ export class Notion {
 
   async getArticlesDatabase(): Promise<Article[]> {
     const res = await this.client.databases.query({
-      database_id: this.ARTICLES_DATABASE_ID,
+      database_id: ARTICLES_DATABASE_ID,
       filter: {
         property: "Status",
         select: {
@@ -64,7 +61,7 @@ export class Notion {
    */
   async getArticleByPath(path: string): Promise<Article> {
     const res = await this.client.databases.query({
-      database_id: this.ARTICLES_DATABASE_ID,
+      database_id: ARTICLES_DATABASE_ID,
       filter: {
         property: "Path",
         text: {
