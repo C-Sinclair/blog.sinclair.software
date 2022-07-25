@@ -1,22 +1,8 @@
-<script context="module" lang="ts">
-	import type { Load } from '@sveltejs/kit';
-	import type { Article } from '$lib/types';
-
-	export const load: Load = async () => {
-		const notion = new Notion();
-		const articles = await notion.getArticlesDatabase();
-		return {
-			props: {
-				articles
-			}
-		};
-	};
-</script>
 
 <script lang="ts">
 	import Tags from '$lib/components/tags/Tags.svelte';
 	import { getTags } from '$lib/components/tags/util';
-	import { Notion } from '$lib/notion';
+    import type { Article } from "$lib/types";
 
 	export let articles: Article[];
 </script>
