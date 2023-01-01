@@ -8,6 +8,7 @@
 
       <!-- Enable responsiveness on mobile devices-->
       <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+      <link rel="icon" href="/favicon.png">
 
       <title>{% block title %}{{ config.title }}{% endblock title %}</title>
 
@@ -23,7 +24,7 @@
       {% endblock extra_head %}
     </head>
 
-    <body class="hack dark main container">
+    <body>
         {% block content %}
             {% block header %}
                 {% if config.extra.top_menu %}
@@ -43,7 +44,9 @@
             <main>
                 <header>
                   <h1>Welcome to my blog</h1>
+                  <img src="/me.jpeg" alt="My avatar" class="avatar" />
                 </header>
+
                 {% for page in paginator.pages %}
                     {{ post_macros::page_in_list(page=page) }}
                 {% endfor %}
