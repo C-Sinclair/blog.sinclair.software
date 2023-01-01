@@ -2,12 +2,13 @@ title = "Sinclair's Software Blog"
 description = "_csinclair_'s adventures in software engineering."
 generate_feed = true
 
+highlight_theme = "monokai"
+
 # The URL the site will be built for
 base_url = "https://blog.sinclair.software"
 
 taxonomies = [
-    # You can enable/disable RSS
-    {name = "categories", feed = true},
+    {name = "languages", feed = true},
     {name = "tags", feed = true},
 ]
 
@@ -24,11 +25,9 @@ highlight_code = true
 
 [extra]
 author = "Conor Sinclair"
-after_dark_menu = [
+top_menu = [
     {url = "$BASE_URL", name = "Home"},
-    {url = "$BASE_URL/categories", name = "Categories"},
+    {url = "$BASE_URL/languages", name = "Programming Languages"},
     {url = "$BASE_URL/tags", name = "Tags"},
-    {url = "https://google.com", name = "Google"},
 ]
-after_dark_title = "My blog"
 

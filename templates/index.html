@@ -26,10 +26,10 @@
     <body class="hack dark main container">
         {% block content %}
             {% block header %}
-                {% if config.extra.after_dark_menu %}
+                {% if config.extra.top_menu %}
                     <header>
                         <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
-                        {% for item in config.extra.after_dark_menu %}
+                        {% for item in config.extra.top_menu %}
                             <a itemprop="url"
                                class="{% if item.url | replace(from="$BASE_URL", to=config.base_url) == current_url %}active{% endif %}"
                                href="{{ item.url | safe | replace(from="$BASE_URL", to=config.base_url) }}">
@@ -41,11 +41,9 @@
             {% endblock header %}
 
             <main>
-                {% if config.extra.after_dark_title %}
-                    <header>
-                        <h1>{{ config.extra.after_dark_title }}</h1>
-                    </header>
-                {% endif %}
+                <header>
+                  <h1>Welcome to my blog</h1>
+                </header>
                 {% for page in paginator.pages %}
                     {{ post_macros::page_in_list(page=page) }}
                 {% endfor %}
