@@ -1,8 +1,10 @@
 +++
 title = "Moving to Zola"
-icon = "🛫"
 date = 2023-01-01
 draft = true
+
+[extra]
+icon = "🛫"
 
 [taxonomies]
 languages = ["Rust"]

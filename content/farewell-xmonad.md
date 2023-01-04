@@ -1,7 +1,9 @@
 +++
 title = "Farewell for now XMonad"
-icon = "🌉"
 date = 2021-03-27
+
+[extra]
+icon = "🌉"
 
 [taxonomies]
 languages = ["Haskell"]

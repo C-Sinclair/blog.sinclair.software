@@ -1,7 +1,9 @@
 +++
 title = "Damn you pango!"
-icon = "🕺"
 date = 2021-03-21
+
+[extra]
+icon = "🕺"
 
 [taxonomies]
 tags = ["Rant", "Linux Woes"]

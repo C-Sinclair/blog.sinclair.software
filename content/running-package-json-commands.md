@@ -1,7 +1,9 @@
 +++
 title = "Running my package json test command - the hard way"
-icon = "📦"
 date = 2022-01-05
+
+[extra]
+icon = "📦"
 
 [taxonomies]
 languages = ["Shell"]
@@ -64,11 +66,11 @@ cat package.json | jq '.scripts.test' | tr -d '"' | xclip -sel clipboard
 
 Now you can paste that bad boy in any other program and you’re away 🚀 
 
-### Beautiful Compositionality
+## Beautiful Compositionality
 
 This is possibly my favourite part of the Linux philosophy. Each of these tools does one thing well, and its up to us the humble power user to *compose* these commands together into a symphony of awesomeness. 
 
-### Interactivity with FZF
+## Interactivity with FZF
 
 Things can start to get really interesting when we incorporate a find and select into this flow. 
 

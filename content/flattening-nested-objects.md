@@ -1,7 +1,9 @@
 +++
 title = "Flattening nested objects"
-icon = "😳"
 date = 2020-04-06
+
+[extra]
+icon = "😳"
 
 [taxonomies]
 languages = ["Javascript"]

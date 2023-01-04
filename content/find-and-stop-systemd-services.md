@@ -1,7 +1,9 @@
 +++
 title = "Find and stop systemd services"
-icon = "🛑"
 date = 2022-01-28
+
+[extra]
+icon = "🛑"
 
 [taxonomies]
 languages = ["Shell"]

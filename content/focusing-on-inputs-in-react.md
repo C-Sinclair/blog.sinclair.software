@@ -1,7 +1,9 @@
 +++
 title = "Focusing on inputs in react"
-icon = "🎯"
 date = 2020-04-09
+
+[extra]
+icon = "🎯"
 
 [taxonomies]
 languages = ["Javascript"]

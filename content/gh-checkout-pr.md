@@ -1,7 +1,9 @@
 +++
 title = "Checkout that PR"
-icon = "🪢"
 date = 2022-07-27
+
+[extra]
+icon = "🪢"
 
 [taxonomies]
 languages = ["Shell"]

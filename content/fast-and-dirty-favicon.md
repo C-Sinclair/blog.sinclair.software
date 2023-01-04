@@ -1,7 +1,9 @@
 +++
 title = "Fast and dirty favicon"
-icon = "🧙"
 date = 2021-12-28
+
+[extra]
+icon = "🧙"
 
 [taxonomies]
 languages = ["Shell"]

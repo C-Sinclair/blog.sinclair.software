@@ -1,7 +1,9 @@
 +++
 title = "Solid is Solid"
-icon = "💪"
 date = 2021-12-04
+
+[extra]
+icon = "💪"
 
 [taxonomies]
 languages = ["Javascript"]

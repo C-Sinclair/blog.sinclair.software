@@ -1,7 +1,9 @@
 +++
 title = "Type safe local storage"
-icon = "🗳️"
 date = 2022-07-28
+
+[extra]
+icon = "🗳️"
 
 [taxonomies]
 languages = ["Typescript"]

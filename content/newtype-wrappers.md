@@ -1,7 +1,9 @@
 +++
 title = "Exploring Haskell’s `newtype` as a type wrapper"
-icon = "🌯"
 date = 2022-10-07
+
+[extra]
+icon = "🌯"
 
 [taxonomies]
 languages = ["Haskell", "Kotlin", "Javascript"]

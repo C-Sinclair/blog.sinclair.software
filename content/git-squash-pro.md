@@ -1,7 +1,9 @@
 +++
 title = "Git Squash in style"
-icon = "🐿️"
 date = 2020-02-13
+
+[extra]
+icon = "🐿️"
 
 [taxonomies]
 languages = ["Shell"]

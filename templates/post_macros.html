@@ -25,7 +25,9 @@
     <article itemscope itemtype="http://schema.org/CreativeWork">
         <header>
             <h2 itemprop="name">
-                <a href="{{ page.permalink | safe }}">{{ page.title }}</a>
+                <a href="{{ page.permalink | safe }}">
+                  {{ page.extra.icon }} {{ page.title }}
+                </a>
             </h2>
             <span class="muted">{{ self::meta(page=page) }}</span>
         </header>

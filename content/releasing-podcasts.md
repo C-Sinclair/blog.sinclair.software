@@ -1,7 +1,9 @@
 +++
 title = "Releasing Podcasts"
-icon = "🎙️"
 date = 2019-12-10
+
+[extra]
+icon = "🎙️"
 
 [taxonomies]
 languages = ["XML"]

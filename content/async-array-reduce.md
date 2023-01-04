@@ -1,7 +1,9 @@
 +++
 title = "Async Array.reduce"
-icon = "♦️"
 date = 2020-03-26
+
+[extra]
+icon = "♦️"
 
 [taxonomies]
 languages = ["Javascript"]

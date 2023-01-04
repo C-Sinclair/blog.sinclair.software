@@ -1,7 +1,9 @@
 +++
 title = "useLess useCallback"
-icon = "🤙"
 date = 2021-02-07
+
+[extra]
+icon = "🤙"
 
 [taxonomies]
 languages = ["Javascript"]

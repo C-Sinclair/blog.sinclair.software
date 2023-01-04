@@ -1,7 +1,9 @@
 +++
 title = "The Quest For PWD In A Fresh Shell"
-icon = "🏈"
 date = 2020-09-25
+
+[extra]
+icon = "🏈"
 
 [taxonomies]
 languages = ["Zsh"]

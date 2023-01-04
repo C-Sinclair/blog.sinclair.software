@@ -1,7 +1,9 @@
 +++
 title = "SSH me to Github"
-icon = "🐙"
 date = 2021-03-21
+
+[extra]
+icon = "🐙"
 
 [taxonomies]
 tags = ["SSH", "Git"]

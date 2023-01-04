@@ -1,7 +1,9 @@
 +++
 title = "ABC's of Javascript - Apply, Bind & Call"
-icon = "🔤"
 date = 2021-03-25
+
+[extra]
+icon = "🔤"
 
 [taxonomies]
 languages = ["Javascript"]
