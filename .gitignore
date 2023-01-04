@@ -1,3 +1,8 @@
 .DS_Store
 .netlify
 public
+
+
+# Added by cargo
+
+/target

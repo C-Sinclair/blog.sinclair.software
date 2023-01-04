@@ -64,6 +64,9 @@
                 </nav>
             </main>
         {% endblock content %}
-    </body>
 
+      {% block js %}
+          <script src="{{ get_url(path="js/site.js", trailing_slash=false) | safe }}" />
+      {% endblock js %}
+    </body>
 </html>

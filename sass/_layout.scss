@@ -1,5 +1,5 @@
 html {
-  font-size: 12px;
+  font-size: 14px;
   display: flex;
   justify-content: center;
 }
@@ -46,10 +46,9 @@ blockquote cite::before {
 }
 
 pre {
-  padding: 2rem;
-  margin: 1.75rem 0;
+  padding: var(--size-4);
+  margin: var(--size-3) 0;
   background-color: #fff;
-  border: 1px solid #ccc;
   overflow: auto;
   background-color: var(--black);
 }
@@ -78,5 +77,26 @@ nav[itemtype*=SiteNav] {
   display: flex;
   width: 100%;
   justify-content: space-between;
+
+  > a {
+    padding: var(--size-4) var(--size-7);
+  }
 }
 
+div[itemprop*=summary] {
+  .readmore {
+    font-size: var(--font-size-3);
+    margin-top: var(--size-3);
+  }
+}
+
+ol.meta {
+  list-style: none;
+  display: flex;
+  width: 100%;
+  padding: 0;
+
+  > li {
+    padding-right: var(--size-7);
+  }
+}
