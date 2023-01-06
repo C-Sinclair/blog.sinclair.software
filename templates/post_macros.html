@@ -1,0 +1,67 @@
+{% macro meta(page) %}
+  <ol class="meta">
+{% if page.extra.playbackId %}
+     <!-- TODO: https://docs.mux.com/api-reference/video#operation/get-asset -->
+  {% else %}
+    <li>
+      <svg style="margin-bottom:-3px" class="i-clock" viewBox="0 0 32 32"
+           width="16" height="16" fill="none" stroke="currentcolor"
+           stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+          <circle cx="16" cy="16" r="14"/>
+          <path d="M16 8 L16 16 20 20"/>
+      </svg>
+      <span>{{ page.reading_time }} minute read</span>
+    </li>
+  {% endif %}
+    <li>
+      <svg style="margin-bottom: -3px" class="i-edit" viewBox="0 0 32 32"
+           width="16" height="16" fill="none" stroke="currentcolor"
+           stroke-linecap="round" stroke-linejoin="round" stroke-width="6.25%">
+          <path d="M30 7 L25 2 5 22 3 29 10 27 Z M21 6 L26 11 Z M5 22 L10 27 Z"/>
+      </svg>
+
+      {% if page.date %}Published: {{ page.date | date(format="%F") }}{% endif %}
+    </li>
+  </ol>
+{% endmacro meta %}
+
+
+{% macro page_in_list(page) %}
+  {% if page.extra.playbackId %}
+    <a href="{{ page.permalink | safe }}">
+      <article itemscope itemtype="http://schema.org/CreativeWork" class="video">
+        <h2 itemprop="name">
+          {{ page.title }}
+        </h2>
+        <img
+          src="https://image.mux.com/{{ page.extra.playbackId }}/thumbnail.png?width=400&height=400&fit_mode=pad&time={{ page.extra.thumbnailTime }}"
+          alt="thumbnail"
+          class="thumbnail"
+        />
+        <img
+          src="https://image.mux.com/{{ page.extra.playbackId }}/animated.gif?width=400"
+          alt="gif"
+          loading="lazy"
+          class="gif"
+        />
+      </article>
+    </a>
+  {% else %}
+      <article itemscope itemtype="http://schema.org/CreativeWork" class="article">
+          <header>
+              <h2 itemprop="name">
+                  <a href="{{ page.permalink | safe }}">
+                    {{ page.extra.icon }} {{ page.title }}
+                  </a>
+              </h2>
+              <span class="muted">{{ self::meta(page=page) }}</span>
+          </header>
+          {% if page.summary %}
+              <div itemprop="summary">
+                  {{ page.summary | safe }}
+                  <nav class="readmore"><a itemprop="url" href="{{ page.permalink | safe }}">Read More&nbsp;&raquo;</a></nav>
+              </div>
+          {% endif %}
+      </article>
+  {% endif %}
+{% endmacro page_in_list %}

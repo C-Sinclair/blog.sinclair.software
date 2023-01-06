@@ -1,0 +1,37 @@
+{% extends "index.html" %}
+{% import "post_macros.html" as post_macros %}
+
+{% block content %}
+    {% block header %}
+      {{ super() }}
+    {% endblock header %}
+
+    <main>
+        <header>
+          <h1>Video adventures in software</h1>
+          <img src="/me.jpeg" alt="My avatar" class="avatar" />
+        </header>
+
+        <ol class="videos singular">
+          {% for page in paginator.pages %}
+              {{ post_macros::page_in_list(page=page) }}
+          {% endfor %}
+        <ol>
+
+        <nav>
+          <p>
+            {% if paginator.previous %}
+              <a href="{{ paginator.previous }}">&laquo; Previous</a> |
+            {% endif %}
+            <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
+            {% if paginator.next %}
+              | <a href="{{ paginator.next }}">Next &raquo;</a>
+            {% endif %}
+          </p>
+        </nav>
+    </main>
+{% endblock content %}
+
+
+
+

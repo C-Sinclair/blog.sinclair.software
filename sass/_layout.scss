@@ -1,0 +1,164 @@
+html {
+  font-size: 14px;
+  display: flex;
+  justify-content: center;
+}
+
+* {
+  box-sizing: border-box;
+  text-rendering: geometricPrecision;
+}
+
+body {
+  font-size: var(--font-size-1);
+  line-height: var(--font-lineheight-3);
+  margin: 0;
+  font-family: var(--font-main);
+  word-wrap: break-word;
+  color: var(--gray-0);
+  background-color: var(--stone-12);
+  width: var(--size-16);
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.3em;
+}
+
+fieldset {
+  border: none;
+  padding: 0;
+  margin: 0;
+}
+
+iframe {
+  border: 0;
+}
+
+blockquote cite {
+  display: block;
+}
+
+blockquote cite::before {
+  content: "\2014";
+}
+:target {
+  color: #fff;
+}
+
+pre {
+  padding: var(--size-4);
+  margin: var(--size-3) 0;
+  background-color: #fff;
+  overflow: auto;
+  background-color: var(--black);
+}
+
+pre code {
+  color: var(--blue);
+}
+
+code,
+strong {
+  color: #fff;
+}
+
+code[class*="language-"],
+pre[class*="language-"],
+pre code {
+  font-weight: 100;
+  text-shadow: none;
+  margin: 1.75rem 0;
+}
+
+main > header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+nav[itemtype*="SiteNav"] {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+
+  > a {
+    padding: var(--size-4) var(--size-7);
+    white-space: nowrap;
+  }
+}
+
+div[itemprop*="summary"] {
+  .readmore {
+    font-size: var(--font-size-3);
+    margin-top: var(--size-3);
+  }
+}
+
+ol,
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+ol.meta {
+  display: flex;
+  width: 100%;
+
+  > li {
+    padding-right: var(--size-7);
+  }
+}
+
+ul.tags {
+  display: flex;
+  margin: 0;
+
+  > li {
+    padding: var(--size-1) var(--size-3);
+    margin-right: var(--size-4);
+    border-radius: var(--size-3);
+    background: var(--cyan-4);
+
+    &:hover {
+      background: var(--cyan-7);
+    }
+
+    > a {
+      color: var(--stone-12);
+    }
+
+    a:hover {
+      border-bottom: none;
+    }
+  }
+}
+
+article[itemtype*="BlogPosting"] {
+  > header {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    span.title.icon {
+      font-size: var(--font-size-8);
+    }
+
+    h1[itemprop="headline"] {
+      margin-top: 0;
+    }
+  }
+
+  [itemprop="articleBody"] {
+    h2 {
+      color: var(--teal-5);
+      &:before {
+        content: "# ";
+      }
+    }
+  }
+}

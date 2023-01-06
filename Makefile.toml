@@ -1,0 +1,23 @@
+###
+# Tasks
+# Here are defined all the relevant tasks to run/build/release the project
+###
+[tasks.default]
+alias = "dev"
+
+[tasks.format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean"]
+
+[tasks.build]
+command = "zola"
+args = ["build"]
+
+[tasks.dev]
+command = "zola"
+args = ["serve"]

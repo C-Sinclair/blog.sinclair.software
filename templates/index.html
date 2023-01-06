@@ -1,0 +1,80 @@
+{% import "post_macros.html" as post_macros %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+      <meta http-equiv="content-type" content="text/html; charset=utf-8">
+
+      <!-- Enable responsiveness on mobile devices-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1">
+      <link rel="icon" href="/favicon.png">
+
+      <title>{% block title %}{{ config.title }}{% endblock title %}</title>
+
+      {% if config.generate_feed %}
+        <link rel="alternate" type={% if config.feed_filename == "atom.xml" %}"application/atom+xml"{% else %}"application/rss+xml"{% endif %} title="RSS" href="{{ get_url(path=config.feed_filename) | safe }}">
+      {% endif %}
+
+      {% block css %}
+          <link rel="stylesheet" href="{{ get_url(path="site.css", trailing_slash=false) | safe }}">
+      {% endblock css %}
+
+      {% block extra_head %}
+      {% endblock extra_head %}
+    </head>
+
+    <body>
+        {% block content %}
+            {% block header %}
+                {% if config.extra.top_menu %}
+                    <header>
+                        <nav itemscope itemtype="http://schema.org/SiteNavigationElement">
+                        {% for item in config.extra.top_menu %}
+                            <a itemprop="url"
+                               class="{% if item.url | replace(from="$BASE_URL", to=config.base_url) == current_url %}active{% endif %}"
+                               href="{{ item.url | safe | replace(from="$BASE_URL", to=config.base_url) }}">
+                                <span itemprop="name">{{ item.name }}</span></a>
+                        {% endfor %}
+                        </nav>
+                    </header>
+                {% endif %}
+            {% endblock header %}
+
+            <main>
+                <header>
+                  <h1>Welcome friend</h1>
+                  <img src="/me.jpeg" alt="My avatar" class="avatar" />
+                  <h3>Join me on my adventures in software</h3>
+                </header>
+
+                <section>
+                  <h2>Here's some recent articles I've written</h2>
+
+                  {% set articles = get_section(path="articles/_index.md") %}
+
+                  {% for page in articles.pages | slice(end=3) %}
+                      {{ post_macros::page_in_list(page=page) }}
+                  {% endfor %}
+                </section>
+
+                <section>
+                  <h2>Check out these videos I've put together</h2>
+
+                  {% set videos = get_section(path="videos/_index.md") %}
+
+                  <ol class="videos">
+                    {% for page in videos.pages | slice(end=3) %}
+                        {{ post_macros::page_in_list(page=page) }}
+                    {% endfor %}
+                  <ol>
+                </section>
+
+            </main>
+        {% endblock content %}
+
+      {% block js %}
+          <script src="{{ get_url(path="js/site.js", trailing_slash=false) | safe }}" />
+      {% endblock js %}
+    </body>
+</html>
