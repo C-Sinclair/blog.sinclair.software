@@ -43,25 +43,33 @@
 
             <main>
                 <header>
-                  <h1>Welcome to my blog</h1>
+                  <h1>Welcome friend</h1>
                   <img src="/me.jpeg" alt="My avatar" class="avatar" />
+                  <h3>Join me on my adventures in software</h3>
                 </header>
 
-                {% for page in paginator.pages %}
-                    {{ post_macros::page_in_list(page=page) }}
-                {% endfor %}
+                <section>
+                  <h2>Here's some recent articles I've written</h2>
 
-                <nav>
-                  <p>
-                    {% if paginator.previous %}
-                      <a href="{{ paginator.previous }}">&laquo; Previous</a> |
-                    {% endif %}
-                    <span>Page {{ paginator.current_index }} of {{ paginator.number_pagers }}</span>
-                    {% if paginator.next %}
-                      | <a href="{{ paginator.next }}">Next &raquo;</a>
-                    {% endif %}
-                  </p>
-                </nav>
+                  {% set articles = get_section(path="articles/_index.md") %}
+
+                  {% for page in articles.pages | slice(end=3) %}
+                      {{ post_macros::page_in_list(page=page) }}
+                  {% endfor %}
+                </section>
+
+                <section>
+                  <h2>Check out these videos I've put together</h2>
+
+                  {% set videos = get_section(path="videos/_index.md") %}
+
+                  <ol class="videos">
+                    {% for page in videos.pages | slice(end=3) %}
+                        {{ post_macros::page_in_list(page=page) }}
+                    {% endfor %}
+                  <ol>
+                </section>
+
             </main>
         {% endblock content %}
 

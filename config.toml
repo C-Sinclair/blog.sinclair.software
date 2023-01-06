@@ -27,6 +27,8 @@ highlight_theme = "OneHalfDark"
 author = "Conor Sinclair"
 top_menu = [
     {url = "$BASE_URL", name = "Home"},
+    {url = "$BASE_URL/articles", name = "Articles"},
+    {url = "$BASE_URL/videos", name = "Videos"},
     {url = "$BASE_URL/languages", name = "Programming Languages"},
     {url = "$BASE_URL/tags", name = "Tags"},
 ]

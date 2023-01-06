@@ -6,7 +6,7 @@ html {
 
 * {
   box-sizing: border-box;
-  text-rendering: geometricPrecision
+  text-rendering: geometricPrecision;
 }
 
 body {
@@ -20,14 +20,19 @@ body {
   width: var(--size-16);
 }
 
-h1, h2, h3, h4, h5, h6 {
-  line-height: 1.3em
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.3em;
 }
 
 fieldset {
   border: none;
   padding: 0;
-  margin: 0
+  margin: 0;
 }
 
 iframe {
@@ -39,7 +44,7 @@ blockquote cite {
 }
 
 blockquote cite::before {
-   content: "\2014";
+  content: "\2014";
 }
 :target {
   color: #fff;
@@ -57,14 +62,17 @@ pre code {
   color: var(--blue);
 }
 
-code, strong {
-  color: #fff
+code,
+strong {
+  color: #fff;
 }
 
-code[class*=language-], pre[class*=language-], pre code {
+code[class*="language-"],
+pre[class*="language-"],
+pre code {
   font-weight: 100;
   text-shadow: none;
-  margin: 1.75rem 0
+  margin: 1.75rem 0;
 }
 
 main > header {
@@ -73,7 +81,7 @@ main > header {
   align-items: center;
 }
 
-nav[itemtype*=SiteNav] {
+nav[itemtype*="SiteNav"] {
   display: flex;
   width: 100%;
   justify-content: space-between;
@@ -83,18 +91,22 @@ nav[itemtype*=SiteNav] {
   }
 }
 
-div[itemprop*=summary] {
+div[itemprop*="summary"] {
   .readmore {
     font-size: var(--font-size-3);
     margin-top: var(--size-3);
   }
 }
 
-ol.meta {
+ol,
+ul {
   list-style: none;
+  padding: 0;
+}
+
+ol.meta {
   display: flex;
   width: 100%;
-  padding: 0;
 
   > li {
     padding-right: var(--size-7);
@@ -102,9 +114,7 @@ ol.meta {
 }
 
 ul.tags {
-  list-style: none;
   display: flex;
-  padding: 0;
   margin: 0;
 
   > li {
@@ -127,7 +137,7 @@ ul.tags {
   }
 }
 
-article[itemtype*=BlogPosting] {
+article[itemtype*="BlogPosting"] {
   > header {
     display: flex;
     flex-direction: column;
@@ -137,17 +147,16 @@ article[itemtype*=BlogPosting] {
       font-size: var(--font-size-8);
     }
 
-    h1[itemprop=headline] {
+    h1[itemprop="headline"] {
       margin-top: 0;
-
     }
   }
 
-  [itemprop=articleBody] {
+  [itemprop="articleBody"] {
     h2 {
       color: var(--teal-5);
       &:before {
-        content: "# "
+        content: "# ";
       }
     }
   }
