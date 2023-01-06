@@ -9,6 +9,9 @@
     <h1>{{ term.name }}</h1>
 
     {% for page in term.pages %}
+      {% if page.extra.playbackId %}
+      {% else %}
         {{ post_macros::page_in_list(page=page) }}
+      {% endif %}
     {% endfor %}
 {% endblock content %}
