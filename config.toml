@@ -4,7 +4,7 @@ generate_feed = true
 
 
 # The URL the site will be built for
-base_url = "https://blog.sinclair.software"
+base_url = "https://sinclair.software"
 
 taxonomies = [
     {name = "languages", feed = true},
