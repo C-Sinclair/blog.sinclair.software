@@ -85,6 +85,7 @@ nav[itemtype*="SiteNav"] {
   display: flex;
   width: 100%;
   justify-content: space-between;
+  flex-wrap: wrap;
 
   > a {
     padding: var(--size-4) var(--size-7);
@@ -107,20 +108,24 @@ ul {
 
 ol.meta {
   display: flex;
+  flex-wrap: wrap;
   width: 100%;
 
   > li {
     padding-right: var(--size-7);
+    white-space: nowrap;
   }
 }
 
 ul.tags {
   display: flex;
+  flex-wrap: wrap;
   margin: 0;
 
   > li {
     padding: var(--size-1) var(--size-3);
     margin-right: var(--size-4);
+    margin-bottom: var(--size-2);
     border-radius: var(--size-3);
     background: var(--cyan-4);
 
@@ -171,5 +176,14 @@ article[itemtype*="BlogPosting"] {
     li::marker {
       content: "💎 ";
     }
+  }
+}
+
+@media screen and (max-width: 800px) {
+  body {
+    width: calc(100vw - var(--size-4));
+    padding: 0 var(--size-2);
+  }
+  nav[itemtype*="SiteNav"] {
   }
 }
