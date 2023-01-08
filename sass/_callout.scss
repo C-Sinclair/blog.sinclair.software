@@ -1,0 +1,31 @@
+details.callout {
+  padding: var(--size-4);
+  background-color: var(--black);
+  border-radius: var(--size-1);
+  background-color: var(--violet-12);
+
+  summary {
+    display: flex;
+    align-items: center;
+    .icon {
+      margin-right: var(--size-2);
+      font-size: var(--font-size-3);
+    }
+    h6 {
+      margin: 0;
+      font-size: var(--font-size-3);
+    }
+  }
+
+  > p {
+    margin: var(--size-1) 0 0 0;
+  }
+}
+
+details.callout.note {
+  /* background-color: var(--violet-12); */
+
+  summary h6 {
+    color: var(--yellow-5);
+  }
+}

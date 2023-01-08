@@ -160,5 +160,16 @@ article[itemtype*="BlogPosting"] {
         content: "# ";
       }
     }
+    ol,
+    ul {
+      list-style: circle;
+      padding-left: var(--size-5);
+    }
+    li {
+      padding: var(--size-1);
+    }
+    li::marker {
+      content: "💎 ";
+    }
   }
 }
