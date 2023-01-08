@@ -185,5 +185,8 @@ article[itemtype*="BlogPosting"] {
     padding: 0 var(--size-2);
   }
   nav[itemtype*="SiteNav"] {
+    > a {
+      padding: var(--size-2) var(--size-4);
+    }
   }
 }

@@ -58,3 +58,12 @@ ol.videos.singular {
     height: var(--size-fluid-10);
   }
 }
+
+@media screen and (max-width: 800px) {
+  ol.videos {
+    grid-template-columns: 1fr;
+    article.video {
+      height: var(--size-fluid-10);
+    }
+  }
+}
