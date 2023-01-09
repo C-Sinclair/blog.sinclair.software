@@ -29,3 +29,11 @@ details.callout.note {
     color: var(--yellow-5);
   }
 }
+
+details.callout.question {
+  background-color: var(--green-11);
+
+  summary h6 {
+    color: var(--yellow-5);
+  }
+}
