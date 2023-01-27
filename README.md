@@ -4,7 +4,7 @@
 
 [![Netlify Status](https://api.netlify.com/api/v1/badges/5ca74cee-54aa-427f-99cb-cbb0491492b4/deploy-status)](https://app.netlify.com/sites/sinclair-software-blog/deploys)
 
-## Commands 
+## Commands
 
 All tasks for the project are defined in [the Makefile.toml](./Makefile.toml)
 
@@ -13,4 +13,8 @@ All tasks for the project are defined in [the Makefile.toml](./Makefile.toml)
 cargo make
 ```
 
+Firing up Neovim
 
+```bash
+nvim --cmd 'set rtp+=.'
+```
