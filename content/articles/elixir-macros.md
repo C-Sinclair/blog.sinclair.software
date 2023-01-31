@@ -20,7 +20,7 @@ You can do basically anything in a macro. Any arbritrary Elixir code can be run 
 
 However, although you _can_ do anything, the question should always be whether you should. Macros add a high degree of complexity to your code, and debugging them is more difficult than standard runtime Elixir code.
 
-## The most `use`d macro
+## The most used macro
 
 There's one macros which is used so heavily it feels more like its part of the language than a macro in its own right, but like a lot of things in Elixir its just another abstraction over the underlying system.
 

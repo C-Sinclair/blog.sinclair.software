@@ -76,9 +76,27 @@ const mountHash = (element) => {
   after(500, () => addPath(hash, "M44 171C89 144 183 111 222 106"));
 };
 
+const scrollToElement = (element) =>
+  window.scrollTo({
+    left: 0,
+    top: element.offsetTop - 10,
+    behavior: "smooth",
+  });
+
 function init() {
+  const url = new URL(document.URL);
+
+  if (url.hash && document.getElementById(url.hash.slice(1))) {
+    scrollToElement(document.getElementById(url.hash.slice(1)));
+  }
+
   runOnAll("h2")(
-    log("Running on"),
+    addListener("click", (event) => {
+      event.preventDefault();
+      url.hash = event.target.id;
+      history.pushState(null, document.title, url.href);
+      scrollToElement(event.target);
+    }),
     addListener("mouseover", (event) => {
       log("Mouseover")(event.target);
       unmountHashes();

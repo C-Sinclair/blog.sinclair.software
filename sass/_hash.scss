@@ -10,6 +10,12 @@ svg.hash {
   }
 }
 
+@media screen and (max-width: 800px) {
+  svg.hash {
+    display: none;
+  }
+}
+
 @keyframes slide-x {
   from {
     transform: scaleX(0, 2) translateY(20px);
