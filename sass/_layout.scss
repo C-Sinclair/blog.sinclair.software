@@ -15,8 +15,8 @@ body {
   margin: 0;
   font-family: var(--font-main);
   word-wrap: break-word;
-  color: var(--gray-0);
-  background-color: var(--stone-12);
+  color: var(--colour-textary);
+  background-color: var(--colour-darkary);
   width: var(--size-16);
 }
 
@@ -55,11 +55,11 @@ pre {
   margin: var(--size-3) 0;
   background-color: #fff;
   overflow: auto;
-  background-color: var(--black);
+  background-color: var(--colour-darkary-light);
 }
 
 pre code {
-  color: var(--blue);
+  color: var(--colour-quartary);
 }
 
 code,
@@ -134,7 +134,7 @@ ul.tags {
     }
 
     > a {
-      color: var(--stone-12);
+      color: var(--colour-darkary);
     }
 
     a:hover {
@@ -160,8 +160,12 @@ article[itemtype*="BlogPosting"] {
 
   [itemprop="articleBody"] {
     h2 {
-      color: var(--teal-5);
+      color: var(--colour-primary);
+      cursor: pointer;
       &:before {
+        content: "\00a0\00a0";
+      }
+      &:hover:before {
         content: "# ";
       }
     }

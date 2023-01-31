@@ -1,18 +1,18 @@
 a {
   cursor: pointer;
-  color: var(--purple-5);
+  color: var(--colour-secondary);
   text-decoration: none;
   border-bottom: 1px solid transparent;
 
   &:hover {
-    color: var(--purple-4);
-    border-bottom: 1px solid var(--violet-8);
+    color: var(--colour-primary);
+    border-bottom: 1px solid var(--tertiary);
   }
 }
 
 nav a.active {
   background-color: var(--pink-4);
-  color: var(--gray-2);
+  color: var(--colour-textary-light);
 }
 
 a[itemprop="url"] {
@@ -23,10 +23,10 @@ a[itemprop="url"] {
   }
 }
 
-nav[itemtype*=SiteNav] a {
-  color: var(--violet-4);
+nav[itemtype*="SiteNav"] a {
+  color: var(--colour-secondary);
 
   &:hover {
-    color: var(--violet-0);
+    color: var(--colour-primary);
   }
 }
