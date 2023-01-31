@@ -1,0 +1,29 @@
+svg.hash {
+  position: absolute;
+  left: calc(-1 * var(--size-7));
+
+  path {
+    animation: slide-x 0.1s forwards ease-in-out;
+  }
+  path[data-axis="y"] {
+    animation-name: slide-y;
+  }
+}
+
+@keyframes slide-x {
+  from {
+    transform: scaleX(0, 2) translateY(20px);
+  }
+  to {
+    transform: scaleX(1) translateY(0);
+  }
+}
+
+@keyframes slide-y {
+  from {
+    transform: scaleY(0);
+  }
+  to {
+    transform: scaleY(1);
+  }
+}

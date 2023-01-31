@@ -162,12 +162,7 @@ article[itemtype*="BlogPosting"] {
     h2 {
       color: var(--colour-primary);
       cursor: pointer;
-      &:before {
-        content: "\00a0\00a0";
-      }
-      &:hover:before {
-        content: "# ";
-      }
+      position: relative;
     }
     ol,
     ul {

@@ -20,6 +20,8 @@
           <link rel="stylesheet" href="{{ get_url(path="site.css", trailing_slash=false) | safe }}">
       {% endblock css %}
 
+      <script src="//cdn.jsdelivr.net/npm/ramda@0.25.0/dist/ramda.js"></script>
+
       {% block extra_head %}
       {% endblock extra_head %}
     </head>
@@ -74,7 +76,7 @@
         {% endblock content %}
 
       {% block js %}
-          <script src="{{ get_url(path="js/site.js", trailing_slash=false) | safe }}" />
+          <script src="{{ get_url(path="js/site.js", trailing_slash=false) | safe }}" type="module" />
       {% endblock js %}
     </body>
 </html>
