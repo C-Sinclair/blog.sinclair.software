@@ -6,6 +6,7 @@ console.log("Welcome");
 window.addEventListener("load", init);
 
 const getAll = (a) => document.querySelectorAll(a);
+const getAllHashes = () => getAll("svg[data-type=hash]");
 
 const _runOnAll = (selector, fun) =>
   R.pipe(getAll, Array.from, R.map(fun))(selector);
@@ -18,15 +19,29 @@ const runOnAll =
 
 const addListener = (event, fun) => (elem) => elem.addEventListener(event, fun);
 
+const scrollToElement = (element) =>
+  window.scrollTo({
+    left: 0,
+    top: element.offsetTop - 10,
+    behavior: "smooth",
+  });
+
 const log = (key) => (s) => console.log(`${key}: `, s);
 
 const after = (time, run) =>
   setTimeout(() => {
-    log("after finished")(time);
     run();
   }, time);
 
-const unmountHashes = () => R.pipe(getAll("[data-type=hash]"));
+const removeElement = (element) => element.remove();
+
+const unmountHash = R.pipe(
+  (id) => document.getElementById(`${id}-hash`),
+  R.ifElse(R.identity, removeElement, R.identity)
+);
+
+const unmountHashes = () =>
+  R.pipe(getAllHashes, Array.from, R.map(removeElement));
 
 const svgSize = 28;
 
@@ -44,7 +59,6 @@ const createSvg = (element) => {
 const strokeColour = "var(--colour-primary)";
 
 const addPath = (svg, d, y) => {
-  log("addpath")(d);
   const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
 
   path.setAttribute("d", d);
@@ -66,7 +80,6 @@ const mountHash = (element) => {
   hash.dataset.type = "hash";
 
   element.appendChild(hash);
-  console.log(hash);
 
   after(0, () => addPath(hash, "M86 41C81.2 43.4 73 124 86 232", true));
   after(100, () =>
@@ -76,12 +89,33 @@ const mountHash = (element) => {
   after(500, () => addPath(hash, "M44 171C89 144 183 111 222 106"));
 };
 
-const scrollToElement = (element) =>
-  window.scrollTo({
-    left: 0,
-    top: element.offsetTop - 10,
-    behavior: "smooth",
-  });
+const setHash = (hash) => {
+  const url = new URL(document.URL);
+  url.hash = hash;
+  history.pushState(null, document.title, url.href);
+};
+
+const hashesMounted = R.pipe(getAllHashes, Array.from, R.length, R.gt(0));
+
+const observer = new IntersectionObserver(
+  (entries) => {
+    entries.forEach((entry) => {
+      const { y } = entry.target.getBoundingClientRect();
+      if (!entry.isIntersecting && y < 10) {
+        setHash(entry.target.id);
+        if (!hashesMounted()) {
+          unmountHashes();
+          mountHash(entry.target);
+        }
+      }
+    });
+  },
+  {
+    rootMargin: "-70px",
+  }
+);
+
+const observeElement = (element) => observer.observe(element);
 
 function init() {
   const url = new URL(document.URL);
@@ -91,16 +125,19 @@ function init() {
   }
 
   runOnAll("h2")(
+    observeElement,
     addListener("click", (event) => {
       event.preventDefault();
-      url.hash = event.target.id;
-      history.pushState(null, document.title, url.href);
+      setHash(event.target.id);
       scrollToElement(event.target);
     }),
     addListener("mouseover", (event) => {
-      log("Mouseover")(event.target);
+      /* log("Mouseover")(event.target); */
       unmountHashes();
       mountHash(event.target);
+    }),
+    addListener("mouseout", (event) => {
+      after(2000, () => unmountHash(event.target.id));
     })
   );
 }
