@@ -1,5 +1,6 @@
 {% extends "index.html" %}
 {% import "post_macros.html" as post_macros %}
+{% set tag_colours = load_data(path="content/tag_colours.json", format="json") %}
 
 {% block extra_head %}
   <meta name="og:type" content="article" />
@@ -30,15 +31,17 @@
         <h1 itemprop="headline">{{ page.title }}</h1>
         <ul class="tags">
           {% if page.taxonomies.tags %}
+            {% set tag_colours = load_data(path="content/tag_colours.json", format="json") %}
             {% for tag in page.taxonomies.tags %}
-              <li>
+              <li style="--colour: {{ tag_colours[tag] | safe }}">
                 <a href="{{ get_taxonomy_url(kind="tags", name=tag) | safe }}">{{ tag }}</a>
               </li>
             {% endfor %}
           {% endif %}
           {% if page.taxonomies.languages %}
+            {% set lang_colours = load_data(path="content/tag_colours.json", format="json") %}
             {% for lang in page.taxonomies.languages %}
-              <li>
+              <li style="--colour: {{ lang_colours[lang] | safe }}">
                 <a href="{{ get_taxonomy_url(kind="languages", name=lang) | safe }}">{{ lang }}</a>
               </li>
             {% endfor %}

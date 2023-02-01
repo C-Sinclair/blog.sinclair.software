@@ -125,7 +125,7 @@ function init() {
     scrollToElement(document.getElementById(url.hash.slice(1)));
   }
 
-  runOnAll("h2")(
+  runOnAll("div[itemprop=articleBody] h2")(
     observeElement,
     addListener("click", (event) => {
       event.preventDefault();
