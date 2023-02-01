@@ -73,6 +73,7 @@ const addPath = (svg, d, y) => {
 };
 
 const mountHash = (element) => {
+  log("mountHash")(element.id);
   if (document.getElementById(`${element.id}-hash`)) {
     return;
   }
@@ -132,7 +133,7 @@ function init() {
       scrollToElement(event.target);
     }),
     addListener("mouseover", (event) => {
-      /* log("Mouseover")(event.target); */
+      log("Mouseover")(event.target);
       unmountHashes();
       mountHash(event.target);
     }),
