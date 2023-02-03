@@ -22,7 +22,7 @@ However, although you _can_ do anything, the question should always be whether y
 
 ## The most used macro
 
-There's one macros which is used so heavily it feels more like its part of the language than a macro in its own right, but like a lot of things in Elixir its just another abstraction over the underlying system.
+There's one macro which is used so heavily it feels more like its part of the language than a macro in its own right, but like a lot of things in Elixir its just another abstraction over the underlying system.
 
 I'm talking of course about [_use_](https://elixir-lang.org/getting-started/alias-require-and-import.html#use).
 
@@ -240,11 +240,11 @@ end
 
 > That's a whole lot of quoting!
 
-The `quote` and `unquote` keywords are special forms which are used to interact with the AST, they translate from code to ASTso you can mix and match which form you are working with.
+The `quote` and `unquote` keywords are special forms which are used to interact with the AST, they translate from code to AST so you can mix and match which form you are working with.
 
 `defmacro` - arguments are in AST form and expect AST to be returned
 `quote` - accepts code forms and returns AST version
-`unquote` - does the reverse, taking AST andd returning code version
+`unquote` - does the reverse, taking AST and returning code version
 
 The Elixir docs for [quote](https://hexdocs.pm/elixir/1.12/Kernel.SpecialForms.html#quote/2) and [unquote](https://hexdocs.pm/elixir/1.12/Kernel.SpecialForms.html#unquote/1) nails the distiction pretty dang well so I'd recommend perusing those!
 
