@@ -14,6 +14,22 @@ Macros are one of the most powerful concepts in Elixir. Its what differentiates 
 
 <!-- more -->
 
+## What is a macro?
+
+A macro is a piece of code which maps some input code into some replacement output code.
+
+It takes code, and gives you back ...code.
+
+This is a very powerful and confusing concept. Its code which runs when the program is being compiled, _not_ when its being run.
+
+Macros often serve to remove the necessity to write copious amounts of boilerplate.
+
+This dark art of transforming code into other code is called metaprogramming.
+
+Lots of programming languages have Macros, but when it comes to Elixir specifically, it is arguably the most important feature.
+
+Elixir macros provide the developer with a nice high level abstraction to work with, removing the need to explicitly operate all the underlying Erlang BEAM machinery your code is compile to turn into.
+
 ## What can you do in a macro?
 
 You can do basically anything in a macro. Any arbritrary Elixir code can be run at compile time of your application. That means everything and anything is possible, from network requests to filesystem operations, all of it can take place _before_ your application ever runs.
